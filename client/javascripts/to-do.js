@@ -1,6 +1,9 @@
 //jshint esversion: 6
 
 let controller = function() {
+  if (localStorage.getItem("toDoList")) {
+    $(".comments").html(localStorage.getItem("toDoList"));
+  }
 
   let addCommentFromInputBox = function() {
     //Semmy uses "$" to name variables that will contain jQuery objects
@@ -12,6 +15,7 @@ let controller = function() {
       $(".comments").append($new_comment);
       //$new_comment.fadeIn();
       $(".comment-input input").val("");
+      localStorage.setItem("toDoList", $(".comments").html());
     }
   };
 
